@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rohan | ML for Smart Cities, Agri-Tech and Geospatial</title>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="nav">
+        <div class="brand">
+          <img class="brand-logo" src="./logo.png" alt="Rohan logo" />
+          <div class="brand-text">
+            <span class="brand-title">Rohan</span>
+            <span class="brand-sub">GeoML Studio</span>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#cases">Case studies</a>
+          <a href="#founders">Founders</a>
+          <a href="#cta" class="pill">Book a demo</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">AI + territory</p>
+            <h1>
+              Trained models for smart cities, digital farming, and geospatial vision.
+            </h1>
+            <p class="lede">
+              Rohan designs and trains predictive, segmentation, and monitoring models
+              that understand the physical world. Satellite data, IoT, and mobility in
+              a single intelligence layer.
+            </p>
+            <div class="cta-row">
+              <a href="#cta" class="btn primary">Design my pilot</a>
+              <a href="#map-anchor" class="btn ghost">View live map</a>
+            </div>
+            <div class="trust">
+              <span>Launch KPIs</span>
+              <div class="pill-row">
+                <div class="pill">
+                  <strong>10x</strong> faster prototyping
+                </div>
+                <div class="pill">
+                  <strong>21 cm</strong> mean parcel accuracy
+                </div>
+                <div class="pill">
+                  <strong>48 h</strong> from data to decision
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-visual" id="map-anchor">
+            <div class="map-shell">
+              <div id="map"></div>
+              <div class="map-legend">
+                <div>
+                  <span class="dot green"></span> Crop health
+                </div>
+                <div>
+                  <span class="dot amber"></span> Water stress risk
+                </div>
+                <div>
+                  <span class="dot blue"></span> Drone route
+                </div>
+              </div>
+            </div>
+            <div class="card metrics">
+              <p class="label">Telemetry</p>
+              <div class="metrics-grid">
+                <div>
+                  <p class="metric-value">92%</p>
+                  <p class="metric-label">Detected coverage</p>
+                </div>
+                <div>
+                  <p class="metric-value">18k</p>
+                  <p class="metric-label">Indexed hectares</p>
+                </div>
+                <div>
+                  <p class="metric-value">0.87</p>
+                  <p class="metric-label">Segmentation IoU</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="services" class="section services">
+          <div class="section-head">
+            <p class="eyebrow">Where we accelerate</p>
+            <h2>We train models that deliver decisions in hours, not months.</h2>
+            <p class="lede narrow">
+              Integrating satellite data, in-field sensors, and urban mobility to generate
+              operational-grade predictions.
+            </p>
+          </div>
+          <div class="cards">
+            <article class="card">
+              <div class="card-icon">🏙️</div>
+              <h3>Smart Cities</h3>
+              <p>
+                Energy demand prediction, dynamic waste routing, and real-time occupancy
+                detection with computer vision.
+              </p>
+              <ul>
+                <li>Vehicle flow models</li>
+                <li>Infrastructure segmentation</li>
+                <li>Anomaly alerts</li>
+              </ul>
+            </article>
+            <article class="card">
+              <div class="card-icon">🌱</div>
+              <h3>Agri-Tech</h3>
+              <p>
+                Vigor indices, optimal irrigation, and plant counting combining
+                multispectral imagery and IoT sensors.
+              </p>
+              <ul>
+                <li>NDVI/NDRE inference</li>
+                <li>Water stress detection</li>
+                <li>Input recommendations</li>
+              </ul>
+            </article>
+            <article class="card">
+              <div class="card-icon">🛰️</div>
+              <h3>Geospatial</h3>
+              <p>
+                Mosaic pipelines, object detection, and asset tracking with
+                self-supervised models.
+              </p>
+              <ul>
+                <li>Change detection</li>
+                <li>Fleet tracking</li>
+                <li>Critical infrastructure</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section id="cases" class="section highlight">
+          <div class="section-head">
+            <p class="eyebrow">Recent work</p>
+            <h2>From prototype to production with reproducible infra.</h2>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="dot green"></div>
+              <div class="case-body">
+                <h3>Agricultural digital twin</h3>
+                <p>
+                  Parcels, weather, and sensors integrated to simulate optimal irrigation.
+                  Water usage reduced by 27%.
+                </p>
+                <a class="small-link" href="https://example.com/project-1" target="_blank" rel="noreferrer">
+                  View project →
+                </a>
+              </div>
+              <div class="case-media">
+                <div
+                  class="case-thumb"
+                  style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 320 180%27><rect width=%27320%27 height=%27180%27 rx=%2718%27 fill=%27%230f1624%27/><rect x=%2718%27 y=%2718%27 width=%27140%27 height=%2770%27 rx=%2714%27 fill=%27%2323e6a2%27/><rect x=%27170%27 y=%2722%27 width=%27120%27 height=%2732%27 rx=%278%27 fill=%27%237ec6ff%27/><rect x=%27170%27 y=%2764%27 width=%2796%27 height=%2718%27 rx=%276%27 fill=%27%23ffd479%27/><rect x=%2718%27 y=%27110%27 width=%27284%27 height=%2712%27 rx=%276%27 fill=%27%23343c4d%27/><rect x=%2718%27 y=%27132%27 width=%27230%27 height=%2712%27 rx=%276%27 fill=%27%23343c4d%27/><rect x=%2718%27 y=%27154%27 width=%27200%27 height=%2712%27 rx=%276%27 fill=%27%23343c4d%27/></svg>');"
+                ></div>
+              </div>
+            </div>
+            <div class="timeline-item flip">
+              <div class="dot amber"></div>
+              <div class="case-body">
+                <h3>Urban heat map</h3>
+                <p>
+                  Ridership and mobility models for public transit to prioritize
+                  micro-interventions and reversible lanes.
+                </p>
+                <a class="small-link" href="https://example.com/project-2" target="_blank" rel="noreferrer">
+                  View project →
+                </a>
+              </div>
+              <div class="case-media">
+                <div
+                  class="case-thumb"
+                  style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 320 180%27><rect width=%27320%27 height=%27180%27 rx=%2718%27 fill=%27%230d101a%27/><rect x=%2718%27 y=%2722%27 width=%27140%27 height=%2760%27 rx=%2712%27 fill=%27%237ec6ff%27/><rect x=%27170%27 y=%2722%27 width=%27120%27 height=%2732%27 rx=%278%27 fill=%27%2323e6a2%27/><rect x=%27170%27 y=%2762%27 width=%2796%27 height=%2718%27 rx=%276%27 fill=%27%23ffd479%27/><rect x=%2718%27 y=%27108%27 width=%27284%27 height=%2712%27 rx=%276%27 fill=%27%23343c4d%27/><rect x=%2718%27 y=%27130%27 width=%27244%27 height=%2712%27 rx=%276%27 fill=%27%23434a59%27/><rect x=%2718%27 y=%27152%27 width=%27180%27 height=%2712%27 rx=%276%27 fill=%27%23343c4d%27/></svg>');"
+                ></div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="dot blue"></div>
+              <div class="case-body">
+                <h3>Climate risk detection</h3>
+                <p>
+                  Automatic flood classification with SAR and optical imagery to trigger
+                  parametric insurance.
+                </p>
+                <a class="small-link" href="https://example.com/project-3" target="_blank" rel="noreferrer">
+                  View project →
+                </a>
+              </div>
+              <div class="case-media">
+                <div
+                  class="case-thumb"
+                  style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 320 180%27><rect width=%27320%27 height=%27180%27 rx=%2718%27 fill=%27%230f1826%27/><rect x=%2718%27 y=%2718%27 width=%27140%27 height=%2770%27 rx=%2714%27 fill=%27%23ffd479%27/><rect x=%27170%27 y=%2722%27 width=%27120%27 height=%2732%27 rx=%278%27 fill=%27%2323e6a2%27/><rect x=%27170%27 y=%2764%27 width=%2796%27 height=%2718%27 rx=%276%27 fill=%27%237ec6ff%27/><rect x=%2718%27 y=%27110%27 width=%27284%27 height=%2712%27 rx=%276%27 fill=%27%23343c4d%27/><rect x=%2718%27 y=%27132%27 width=%27250%27 height=%2712%27 rx=%276%27 fill=%27%23434a59%27/><rect x=%2718%27 y=%27154%27 width=%27190%27 height=%2712%27 rx=%276%27 fill=%27%23343c4d%27/></svg>');"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="founders" class="section founders">
+          <div class="section-head">
+            <p class="eyebrow">Team</p>
+            <h2>Meet the founders building Rohan.</h2>
+            <p class="lede narrow">
+              AI, geospatial, and operations veterans with a bias for shipping pilots fast.
+            </p>
+          </div>
+          <div class="cards founders-grid">
+            <article class="card founder-card">
+              <div class="founder-head">
+                <img class="avatar-img" src="./diavila.jpg" alt="Alex Luna avatar" />
+                <div>
+                  <h3>Alex Luna</h3>
+                  <p class="muted">CEO · Geospatial strategist</p>
+                </div>
+              </div>
+              <p class="muted">
+                Led city-scale mapping programs and built data partnerships across LATAM.
+              </p>
+              <div class="socials">
+                <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+                <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+                <a href="https://www.instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+              </div>
+            </article>
+            <article class="card founder-card">
+              <div class="founder-head">
+                <img class="avatar-img" src="./csar.jpg" alt="Maya Singh avatar" />
+                <div>
+                  <h3>Maya Singh</h3>
+                  <p class="muted">CTO · ML systems</p>
+                </div>
+              </div>
+              <p class="muted">
+                Ex-lead engineer for remote sensing models, focused on scalable training and MLOps.
+              </p>
+              <div class="socials">
+                <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+                <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+                <a href="https://www.instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+              </div>
+            </article>
+            <article class="card founder-card">
+              <div class="founder-head">
+                <img class="avatar-img" src="./mafer.jpg" alt="Riley Duarte avatar" />
+                <div>
+                  <h3>Riley Duarte</h3>
+                  <p class="muted">COO · Field ops</p>
+                </div>
+              </div>
+              <p class="muted">
+                Built drone and sensor networks for precision agriculture; turns data into action.
+              </p>
+              <div class="socials">
+                <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+                <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+                <a href="https://www.instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="cta" class="section cta">
+          <div class="cta-card">
+            <div>
+              <p class="eyebrow">Let’s map your case</p>
+              <h2>Tell us your challenge and we’ll run a data sprint in 10 days.</h2>
+              <p class="lede narrow">
+                We train, evaluate, and deploy a pilot with your own layers. Full-stack
+                ML + geospatial team on demand.
+              </p>
+            </div>
+            <div class="cta-actions">
+              <a class="btn primary wide" href="mailto:hello@rohan.ai">
+                Send briefing
+              </a>
+              <a class="btn ghost wide" href="#services">See capabilities</a>
+              <p class="disclaimer">
+                Includes data checklist and integration timeline.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div>Rohan · Geospatial AI | Monterrey / CDMX / Remote</div>
+        <div class="pill-row">
+          <div class="pill small">API-first</div>
+          <div class="pill small">MLOps ready</div>
+          <div class="pill small">Satellite + IoT</div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      window.MAPBOX_TOKEN = __MAPBOX_TOKEN__;
+    </script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
