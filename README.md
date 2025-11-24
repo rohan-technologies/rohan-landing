@@ -27,7 +27,7 @@ Open `http://localhost:3000` to see the landing and live map. If the token is mi
 ## Project layout (for GitHub)
 
 - Track: `index.html`, `styles.css`, `app.js`, `server.js`, `build.js`, `README.md`, `DEPLOY.md`, image assets, `package.json`.
-- Ignore build artifacts: `dist/` is gitignored by default.
+- Ignore build artifacts: `dist/` is gitignored.
 - Typical flow:
   ```bash
   git init
@@ -51,6 +51,12 @@ npm run build
 ## Deployment guide
 
 See `DEPLOY.md` for step-by-step S3 + optional CloudFront setup and caching guidance.
+
+### GitHub Actions deploy
+
+- Workflow: `.github/workflows/deploy.yml`
+- Secrets needed: `MAPBOX_TOKEN`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`, `AWS_S3_BUCKET`.
+- Trigger: push to `main` builds `dist/` and syncs to S3 (long cache for assets, short for `index.html`). Adjust branch/headers as needed.
 
 ## Customization notes
 

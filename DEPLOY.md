@@ -54,3 +54,27 @@ aws cloudfront create-invalidation --distribution-id YOUR_DIST_ID --paths "/inde
 - Keep `MAPBOX_TOKEN` in environment variables only; never commit it.
 - `dist/` stays gitignored; CI/CD (GitHub Actions) can run `npm run build` then `aws s3 sync dist/ ...`.
 - For CI, pass `MAPBOX_TOKEN` as a secret and avoid logging it.***
+
+## GitHub Actions: automatic deploy to S3
+
+Use the provided workflow at `.github/workflows/deploy.yml` to deploy on every push to `main`.
+
+### Required GitHub secrets
+
+- `MAPBOX_TOKEN` — Mapbox public token (read-only).
+- `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY` — IAM user with S3 write permissions.
+- `AWS_REGION` — region of the target bucket (e.g., `us-east-1`).
+- `AWS_S3_BUCKET` — bucket name (e.g., `rohan-landing-example`).
+
+### How it works
+
+1) Checks out the repo, sets up Node 18.  
+2) Runs `npm run build` (injects `MAPBOX_TOKEN` and writes `dist/`).  
+3) Configures AWS credentials via `aws-actions/configure-aws-credentials`.  
+4) Syncs `dist/` to S3 with long cache for assets and short cache for `index.html`.
+
+### Customize
+
+- Change the branch trigger in `deploy.yml` if needed.  
+- Adjust cache headers in the sync commands.  
+- If fronting with CloudFront, add an invalidation step for `/index.html` after upload.
