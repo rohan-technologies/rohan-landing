@@ -9,7 +9,6 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
-    # 👇 Aquí se activa el environment rohan-landing
     environment:
       name: rohan-landing
 
@@ -22,9 +21,18 @@ jobs:
         with:
           node-version: 18
 
-      # 👇 Validación explícita: los secrets deben venir del environment
-      - name: Validate required environment secrets
+      # ------------------------------------------------------
+      # ✅ AQUÍ asignamos los secrets como variables de entorno
+      # ------------------------------------------------------
+      - name: Validate required secrets
+        env:
+          MAPBOX_TOKEN: ${{ secrets.MAPBOX_TOKEN }}
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
+          missing=0
           required_vars=(
             MAPBOX_TOKEN
             AWS_S3_BUCKET
@@ -33,11 +41,9 @@ jobs:
             AWS_SECRET_ACCESS_KEY
           )
 
-          missing=0
           for var in "${required_vars[@]}"; do
-            value="${{ secrets.${var} }}"
-            if [ -z "$value" ]; then
-              echo "::error::Missing environment secret: $var"
+            if [ -z "${!var}" ]; then
+              echo "::error::Missing required secret: $var"
               missing=1
             fi
           done
@@ -52,7 +58,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}   # ← From environment
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
