@@ -8,7 +8,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    environment: rohan-landing
+    environment:
+      name: rohan-landing
     env:
       MAPBOX_TOKEN: ${{ secrets.MAPBOX_TOKEN }}
       AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
