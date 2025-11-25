@@ -8,16 +8,13 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
+    # 👇 Aquí se activa el environment rohan-landing
     environment:
       name: rohan-landing
-    env:
-      MAPBOX_TOKEN: ${{ secrets.MAPBOX_TOKEN }}
-      AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-      AWS_REGION: ${{ secrets.AWS_REGION }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Node
@@ -25,15 +22,26 @@ jobs:
         with:
           node-version: 18
 
-      - name: Validate required secrets
+      # 👇 Validación explícita: los secrets deben venir del environment
+      - name: Validate required environment secrets
         run: |
+          required_vars=(
+            MAPBOX_TOKEN
+            AWS_S3_BUCKET
+            AWS_REGION
+            AWS_ACCESS_KEY_ID
+            AWS_SECRET_ACCESS_KEY
+          )
+
           missing=0
-          for var in MAPBOX_TOKEN AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_REGION AWS_S3_BUCKET; do
-            if [ -z "${!var}" ]; then
-              echo "::error::Missing required secret: $var"
+          for var in "${required_vars[@]}"; do
+            value="${{ secrets.${var} }}"
+            if [ -z "$value" ]; then
+              echo "::error::Missing environment secret: $var"
               missing=1
             fi
           done
+
           if [ "$missing" -eq 1 ]; then
             exit 1
           fi
@@ -44,7 +52,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}   # ← From environment
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
@@ -54,5 +62,6 @@ jobs:
             --delete \
             --cache-control "public, max-age=604800" \
             --exclude "index.html"
+
           aws s3 cp dist/index.html s3://${{ secrets.AWS_S3_BUCKET }}/index.html \
             --cache-control "public, max-age=300"
