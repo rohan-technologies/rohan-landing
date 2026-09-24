@@ -1,235 +1,90 @@
 (() => {
-  const token = window.MAPBOX_TOKEN;
-  const mapContainer = document.getElementById('map');
-
-  if (!token) {
-    mapContainer.innerHTML =
-      '<div class="map-error">Set the MAPBOX_TOKEN environment variable to load the live map.</div>';
-    return;
+  /* ===== Tema (en memoria, sin storage) ===== */
+  const themeToggle = document.getElementById('themeToggle');
+  function toggleTheme() {
+    const root = document.documentElement;
+    const dark = root.dataset.theme === 'dark';
+    root.dataset.theme = dark ? 'light' : 'dark';
+    themeToggle.textContent = dark ? '◐ Oscuro' : '◐ Claro';
   }
 
-  mapboxgl.accessToken = token;
+  /* ===== Capas de información (componente 09, animado) ===== */
+  const scene = document.getElementById('layersScene');
+  const mergeBtn = document.getElementById('mergeBtn');
+  const layersSub = document.getElementById('layersSub');
+  const layersStateTxt = document.getElementById('layersStateTxt');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let autoTimer = null;
 
-  const center = [-120.0605, 36.335];
+  function setMerged(merged) {
+    scene.classList.toggle('merged', merged);
+    mergeBtn.textContent = merged ? 'Separar capas' : 'Fusionar capas';
+    layersSub.textContent = merged ? 'vista fusionada · gemelo digital' : 'vista separada · 4 capas';
+    layersStateTxt.textContent = merged ? 'Gemelo digital compuesto' : 'Componiendo gemelo digital';
+  }
+  function startAuto() {
+    if (reduceMotion || autoTimer) return;
+    autoTimer = setInterval(() => setMerged(!scene.classList.contains('merged')), 4500);
+  }
+  function stopAuto() {
+    clearInterval(autoTimer); autoTimer = null;
+  }
+  function userToggleLayers() {
+    stopAuto();                       /* el control pasa a la persona */
+    setMerged(!scene.classList.contains('merged'));
+  }
 
-  const farmPolygon = {
-    type: 'FeatureCollection',
-    features: [
-      {
-        type: 'Feature',
-        properties: { name: 'Parcela Oeste' },
-        geometry: {
-          type: 'Polygon',
-          coordinates: [
-            [
-              [-120.0765, 36.3438],
-              [-120.0465, 36.3438],
-              [-120.0465, 36.3262],
-              [-120.0765, 36.3262],
-              [-120.0765, 36.3438]
-            ]
-          ]
-        }
-      }
-    ]
-  };
+  /* arranca el ciclo automático cuando la sección entra al viewport */
+  const stage = document.querySelector('.layers-stage');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { startAuto(); } });
+    }, { threshold: 0.35 }).observe(stage);
+  } else {
+    startAuto();
+  }
 
-  const hotspots = {
-    type: 'FeatureCollection',
-    features: [
-      {
-        type: 'Feature',
-        properties: { category: 'stress' },
-        geometry: { type: 'Point', coordinates: [-120.066, 36.3375] }
-      },
-      {
-        type: 'Feature',
-        properties: { category: 'stress' },
-        geometry: { type: 'Point', coordinates: [-120.058, 36.3315] }
-      },
-      {
-        type: 'Feature',
-        properties: { category: 'ok' },
-        geometry: { type: 'Point', coordinates: [-120.054, 36.3395] }
-      }
-    ]
-  };
-
-  const droneRoute = {
-    type: 'Feature',
-    geometry: {
-      type: 'LineString',
-      coordinates: [
-        [-120.075, 36.327],
-        [-120.065, 36.327],
-        [-120.053, 36.3285],
-        [-120.048, 36.335],
-        [-120.050, 36.3415],
-        [-120.061, 36.343],
-        [-120.072, 36.341],
-        [-120.074, 36.333],
-        [-120.068, 36.3295],
-        [-120.075, 36.327]
-      ]
+  /* pintar los lienzos de cada capa (idéntico al componente 09) */
+  function paint(id, fn) {
+    const host = document.getElementById(id);
+    const cv = document.createElement('canvas'); cv.width = 300; cv.height = 220;
+    fn(cv.getContext('2d'), 300, 220);
+    host.appendChild(cv);
+  }
+  paint('lf-sat', (c, w, h) => {
+    c.fillStyle = '#1a2333'; c.fillRect(0, 0, w, h);
+    for (let i = 0; i < 40; i++) {
+      c.fillStyle = 'rgba(120,130,150,' + (Math.random() * 0.12) + ')';
+      const s = 10 + Math.random() * 30;
+      c.fillRect(Math.random() * w, Math.random() * h, s, s);
     }
-  };
-
-  const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/satellite-streets-v12',
-    center,
-    zoom: 13.2,
-    pitch: 50,
-    bearing: 12
+  });
+  paint('lf-bio', (c, w, h) => {
+    for (let i = 0; i < 7; i++) {
+      const g = c.createRadialGradient(Math.random() * w, Math.random() * h, 2, Math.random() * w, Math.random() * h, 40 + Math.random() * 40);
+      g.addColorStop(0, 'rgba(123,154,102,0.7)'); g.addColorStop(1, 'rgba(123,154,102,0)');
+      c.fillStyle = g; c.fillRect(0, 0, w, h);
+    }
+  });
+  paint('lf-water', (c, w, h) => {
+    c.strokeStyle = 'rgba(107,143,184,0.75)'; c.lineWidth = 3;
+    c.beginPath(); c.moveTo(0, h * 0.6);
+    for (let x = 0; x <= w; x += 20) c.lineTo(x, h * 0.6 + Math.sin(x / 30) * 22);
+    c.stroke();
+    c.lineWidth = 2; c.beginPath(); c.moveTo(w * 0.3, 0);
+    for (let y = 0; y <= h; y += 20) c.lineTo(w * 0.3 + Math.sin(y / 25) * 18, y);
+    c.stroke();
+  });
+  paint('lf-detect', (c) => {
+    const pts = [[60, 50], [180, 90], [120, 150], [230, 140], [90, 110]];
+    pts.forEach(p => {
+      c.fillStyle = 'rgba(232,116,60,0.9)';
+      c.beginPath(); c.arc(p[0], p[1], 5, 0, 7); c.fill();
+      c.strokeStyle = 'rgba(232,116,60,0.5)'; c.lineWidth = 1.5;
+      c.beginPath(); c.arc(p[0], p[1], 12, 0, 7); c.stroke();
+    });
   });
 
-  map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'top-right');
-
-  map.on('load', () => {
-    map.addSource('farm', { type: 'geojson', data: farmPolygon });
-    map.addLayer({
-      id: 'farm-fill',
-      type: 'fill',
-      source: 'farm',
-      paint: {
-        'fill-color': '#18ffb4',
-        'fill-opacity': 0.18
-      }
-    });
-
-    map.addLayer({
-      id: 'farm-outline',
-      type: 'line',
-      source: 'farm',
-      paint: {
-        'line-color': '#7ec6ff',
-        'line-width': 2
-      }
-    });
-
-    map.addSource('hotspots', { type: 'geojson', data: hotspots });
-    map.addLayer({
-      id: 'hotspots-layer',
-      type: 'circle',
-      source: 'hotspots',
-      paint: {
-        'circle-radius': [
-          'interpolate',
-          ['linear'],
-          ['get', 'pulse'],
-          0,
-          6,
-          1,
-          12
-        ],
-        'circle-color': [
-          'match',
-          ['get', 'category'],
-          'stress',
-          '#ffd479',
-          '#7af5c8'
-        ],
-        'circle-blur': 0.3,
-        'circle-opacity': 0.8
-      }
-    });
-
-    map.addSource('drone-route', { type: 'geojson', data: droneRoute });
-    map.addLayer({
-      id: 'drone-route-layer',
-      type: 'line',
-      source: 'drone-route',
-      layout: { 'line-cap': 'round', 'line-join': 'round' },
-      paint: {
-        'line-width': 3,
-        'line-gradient': [
-          'interpolate',
-          ['linear'],
-          ['line-progress'],
-          0,
-          '#7ec6ff',
-          0.5,
-          '#18ffb4',
-          1,
-          '#7ec6ff'
-        ]
-      }
-    });
-
-    map.addSource('drone-point', {
-      type: 'geojson',
-      data: {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: droneRoute.geometry.coordinates[0]
-        }
-      }
-    });
-    map.addLayer({
-      id: 'drone-point-layer',
-      type: 'circle',
-      source: 'drone-point',
-      paint: {
-        'circle-radius': 7,
-        'circle-color': '#7ec6ff',
-        'circle-stroke-color': '#001018',
-        'circle-stroke-width': 2,
-        'circle-opacity': 0.9
-      }
-    });
-
-    animateLayers(map);
-  });
-
-  const animateLayers = (mapInstance) => {
-    let pulse = 0;
-    let direction = 1;
-    let routeIndex = 0;
-
-    const step = () => {
-      pulse += 0.04 * direction;
-      if (pulse >= 1 || pulse <= 0) {
-        direction *= -1;
-      }
-
-      const hotSource = mapInstance.getSource('hotspots');
-      if (hotSource) {
-        const animated = {
-          ...hotspots,
-          features: hotspots.features.map((f) => ({
-            ...f,
-            properties: { ...f.properties, pulse: pulse }
-          }))
-        };
-        hotSource.setData(animated);
-      }
-
-      const pointSource = mapInstance.getSource('drone-point');
-      if (pointSource) {
-        routeIndex = (routeIndex + 1) % droneRoute.geometry.coordinates.length;
-        pointSource.setData({
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: droneRoute.geometry.coordinates[routeIndex]
-          }
-        });
-      }
-
-      if (routeIndex % 40 === 0) {
-        mapInstance.easeTo({
-          center: droneRoute.geometry.coordinates[routeIndex],
-          bearing: mapInstance.getBearing() + 3,
-          duration: 1600,
-          pitch: 60,
-          easing: (t) => t
-        });
-      }
-
-      requestAnimationFrame(step);
-    };
-
-    step();
-  };
+  themeToggle.addEventListener('click', toggleTheme);
+  mergeBtn.addEventListener('click', userToggleLayers);
 })();

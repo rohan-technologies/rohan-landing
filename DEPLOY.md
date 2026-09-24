@@ -2,15 +2,13 @@
 
 Guide to ship the landing as a static site on S3 (optionally behind CloudFront) without exposing secrets in the repo.
 
-## 1) Build static assets with the Mapbox token
+## 1) Build static assets
 
 ```bash
-# set your public Mapbox token (do not commit it)
-export MAPBOX_TOKEN="pk.YOUR_TOKEN"
 npm run build
 ```
 
-This generates `dist/` with `index.html` containing the injected token plus assets (CSS, JS, images).
+This generates `dist/` with `index.html` (asset URLs cache-busted with a content hash) plus `styles.css`, `app.js` and `logo.png`.
 
 ## 2) Create and configure the S3 bucket
 
@@ -38,7 +36,7 @@ aws s3 cp dist/index.html s3://rohan-landing-example/index.html \
 
 - Create a CloudFront distribution with the S3 bucket as origin (Origin Access Control recommended).
 - Default root object: `index.html`.
-- Behaviors: long cache for assets (`*.css, *.js, *.png, *.jpg`) and short cache for `index.html`.
+- Behaviors: long cache for assets (`*.css, *.js, *.png`) and short cache for `index.html`. Forward query strings to the cache key (asset URLs use `?v=<hash>`).
 - Attach ACM certificate for your domain and add the CNAME.
 
 ## 5) Updates
@@ -51,9 +49,8 @@ aws cloudfront create-invalidation --distribution-id YOUR_DIST_ID --paths "/inde
 
 ## Notes
 
-- Keep `MAPBOX_TOKEN` in environment variables only; never commit it.
-- `dist/` stays gitignored; CI/CD (GitHub Actions) can run `npm run build` then `aws s3 sync dist/ ...`.
-- For CI, pass `MAPBOX_TOKEN` as a secret and avoid logging it.***
+- `dist/` stays gitignored; CI/CD (GitHub Actions) runs `npm run build` then `aws s3 sync dist/ ...`.
+- v2 no longer uses Mapbox; the `MAPBOX_TOKEN` secret can be removed from the repo settings.
 
 ## GitHub Actions: automatic deploy to S3
 
@@ -61,7 +58,6 @@ Use the provided workflow at `.github/workflows/deploy.yml` to deploy on every p
 
 ### Required GitHub secrets
 
-- `MAPBOX_TOKEN` — Mapbox public token (read-only).
 - `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY` — IAM user with S3 write permissions.
 - `AWS_REGION` — region of the target bucket (e.g., `us-east-1`).
 - `AWS_S3_BUCKET` — bucket name (e.g., `rohan-landing-example`).
@@ -69,7 +65,7 @@ Use the provided workflow at `.github/workflows/deploy.yml` to deploy on every p
 ### How it works
 
 1) Checks out the repo, sets up Node 18.  
-2) Runs `npm run build` (injects `MAPBOX_TOKEN` and writes `dist/`).  
+2) Runs `npm run build` (writes `dist/` with cache-busted asset URLs).  
 3) Configures AWS credentials via `aws-actions/configure-aws-credentials`.  
 4) Syncs `dist/` to S3 with long cache for assets and short cache for `index.html`.
 
