@@ -1,64 +1,49 @@
-# Rohan landing
+# Rohan landing (v2)
 
-Landing page for Rohan, a startup that trains models for smart cities, agri-tech, and geospatial solutions. The hero banner includes an animated farming map using Mapbox GL JS.
+Landing page for **Rohan Technologies** — geospatial intelligence for the age of AI. Presents the three product surfaces (Orbital, Datos Abiertos, Labs), the animated "capas de información" component, and the company mission/values. Site copy is in Spanish.
+
+v2 is a full rebuild of the v1 Mapbox-based landing. It keeps the same architecture (static files → `build.js` → `dist/` → S3 via GitHub Actions) but no longer needs a Mapbox token.
 
 ## Requirements
 
-- Node.js 18+
-- `MAPBOX_TOKEN` environment variable with your public Mapbox token.
+- Node.js 18+ (no dependencies to install)
 
 ## Run locally
 
 ```bash
-MAPBOX_TOKEN="pk.XXXX" node server.js
+npm start
 ```
 
-Open `http://localhost:3000` to see the landing and live map. If the token is missing, the banner shows a notice.
+Open `http://localhost:3000`.
 
 ## Edit content efficiently
 
-- `index.html`: all copy, sections, and anchor ids (`#services`, `#cases`, `#founders`, `#cta`). Update text directly here.
-- Hero map labels: inside the `.map-legend` block in `index.html`.
-- Recent work cards: under the `#cases` section; each card has text plus an embedded thumbnail (`case-thumb`) and link.
-- Founders: update names, roles, and social links in `#founders`. Avatar sources are set to `diavila.jpg`, `csar.jpg`, `mafer.jpg`.
-- `styles.css`: layout, colors, and sizing. Small, scoped class names (e.g., `.case-thumb`, `.avatar-img`).
-- `app.js`: geospatial data (farm polygon, hotspots, drone route) and map style. Change coordinates or Mapbox style URL as needed.
+- `index.html`: all copy and sections. Anchor ids: `#productos`, `#como-funciona`, `#diferenciador`, `#empresa`.
+  - Logo: inline SVG `<defs>` at the top of `<body>` (`#rohan-full`, `#rohan-mark`, `#rohan-mountains-only`), reused via `<use href="…">`.
+  - Products: `.product` cards inside `#productos` (domain, status badge, description, bullets).
+  - How it works: the 4 layers (`.layer`) and 3 steps (`.how-step`) inside `#como-funciona`.
+  - Coordination lanes: `.diff-lane` blocks inside `#diferenciador` (position with `left`/`width` %).
+  - Mission, vision, values: `#empresa`.
+  - Contact email: `mailto:` links in the status band and footer.
+- `styles.css`: design tokens at the top (`:root`, `[data-theme="dark"]`, `[data-theme="light"]`), then one block per section.
+- `app.js`: theme toggle (dark by default, in memory only), the layers merge/separate animation, and the canvas painters for each layer (`paint('lf-…')`).
+- `logo.png`: favicon.
 
-## Project layout (for GitHub)
+## Project layout
 
-- Track: `index.html`, `styles.css`, `app.js`, `server.js`, `build.js`, `README.md`, `DEPLOY.md`, image assets, `package.json`.
-- Ignore build artifacts: `dist/` is gitignored.
-- Typical flow:
-  ```bash
-  git init
-  git add .
-  git commit -m "Init Rohan landing"
-  git remote add origin git@github.com:your-org/rohan-landing.git
-  git push -u origin main
-  ```
+- Track: `index.html`, `styles.css`, `app.js`, `logo.png`, `server.js`, `build.js`, `package.json`, docs, workflow.
+- `dist/` is a build artifact and is gitignored.
 
 ## Build for static hosting (S3/CloudFront)
 
-`build.js` injects `MAPBOX_TOKEN` and copies assets to `dist/`:
-
 ```bash
-export MAPBOX_TOKEN="pk.XXXX"
 npm run build
 ```
 
-`dist/` can be uploaded to S3 as a static site. Do not commit the token.
+`build.js` copies the site into `dist/` and appends a content hash to asset URLs in `index.html` (`styles.css?v=…`), so the 7-day asset cache never serves stale CSS/JS after a deploy.
 
-## Deployment guide
+## Deployment
 
-See `DEPLOY.md` for step-by-step S3 + optional CloudFront setup and caching guidance.
+See `DEPLOY.md`. Pushing to `main` runs `.github/workflows/deploy.yml`, which builds and syncs `dist/` to S3.
 
-### GitHub Actions deploy
-
-- Workflow: `.github/workflows/deploy.yml`
-- Secrets needed: `MAPBOX_TOKEN`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`, `AWS_S3_BUCKET`.
-- Trigger: push to `main` builds `dist/` and syncs to S3 (long cache for assets, short for `index.html`). Adjust branch/headers as needed.
-
-## Customization notes
-
-- Adjust `farmPolygon`, `hotspots`, or `droneRoute` in `app.js` to match your datasets.
-- Swap the map style (`mapbox://styles/mapbox/satellite-streets-v12`) with your own Mapbox Studio style.
+Secrets needed: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`, `AWS_S3_BUCKET`. (`MAPBOX_TOKEN` is no longer used and can be deleted.)

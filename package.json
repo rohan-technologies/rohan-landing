@@ -1,8 +1,8 @@
 {
   "name": "rohan-landing",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "Landing page for Rohan AI geospatial services",
+  "description": "Landing page for Rohan Technologies \u2014 geospatial intelligence for the age of AI",
   "scripts": {
     "start": "node server.js",
     "build": "node build.js"

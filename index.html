@@ -1,322 +1,374 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rohan | ML for Smart Cities, Agri-Tech and Geospatial</title>
-    <link
-      href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="preconnect"
-      href="https://fonts.googleapis.com"
-    />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" type="image/png" href="./logo.png" />
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body>
-    <div class="page">
-      <header class="nav">
-        <div class="brand">
-          <img class="brand-logo" src="./logo.png" alt="Rohan logo" />
-          <div class="brand-text">
-            <span class="brand-title">Rohan</span>
-            <span class="brand-sub">GeoML Studio</span>
-          </div>
-        </div>
-        <nav class="nav-links">
-          <a href="#services">Services</a>
-          <a href="#cases">Case studies</a>
-          <a href="#founders">Founders</a>
-          <a href="#cta" class="pill">Book a demo</a>
-        </nav>
-      </header>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rohan Technologies · Inteligencia geoespacial para la era de la IA</title>
+<meta name="description" content="Rohan Technologies construye plataformas de inteligencia territorial con agentes de IA: Orbital, el Portal de Datos Abiertos y Labs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;1,8..60,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="./logo.png">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
 
-      <main>
-        <section class="hero">
-          <div class="hero-copy">
-            <p class="eyebrow">AI + territory</p>
-            <h1>
-              Trained models for smart cities, digital farming, and geospatial vision.
-            </h1>
-            <p class="lede">
-              Rohan designs and trains predictive, segmentation, and monitoring models
-              that understand the physical world. Satellite data, IoT, and mobility in
-              a single intelligence layer.
-            </p>
-            <div class="cta-row">
-              <a href="#cta" class="btn primary">Design my pilot</a>
-              <a href="#map-anchor" class="btn ghost">View live map</a>
-            </div>
-            <div class="trust">
-              <span>Launch KPIs</span>
-              <div class="pill-row">
-                <div class="pill">
-                  <strong>10x</strong> faster prototyping
-                </div>
-                <div class="pill">
-                  <strong>21 cm</strong> mean parcel accuracy
-                </div>
-                <div class="pill">
-                  <strong>48 h</strong> from data to decision
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="hero-visual" id="map-anchor">
-            <div class="map-shell">
-              <div id="map"></div>
-              <div class="map-legend">
-                <div>
-                  <span class="dot green"></span> Crop health
-                </div>
-                <div>
-                  <span class="dot amber"></span> Water stress risk
-                </div>
-                <div>
-                  <span class="dot blue"></span> Drone route
-                </div>
-              </div>
-            </div>
-            <div class="card metrics">
-              <p class="label">Telemetry</p>
-              <div class="metrics-grid">
-                <div>
-                  <p class="metric-value">92%</p>
-                  <p class="metric-label">Detected coverage</p>
-                </div>
-                <div>
-                  <p class="metric-value">18k</p>
-                  <p class="metric-label">Indexed hectares</p>
-                </div>
-                <div>
-                  <p class="metric-value">0.87</p>
-                  <p class="metric-label">Segmentation IoU</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+<div class="ambient" aria-hidden="true"><div class="grid"></div></div>
 
-        <section id="services" class="section services">
-          <div class="section-head">
-            <p class="eyebrow">Where we accelerate</p>
-            <h2>We train models that deliver decisions in hours, not months.</h2>
-            <p class="lede narrow">
-              Integrating satellite data, in-field sensors, and urban mobility to generate
-              operational-grade predictions.
-            </p>
-          </div>
-          <div class="cards">
-            <article class="card">
-              <div class="card-icon">🏙️</div>
-              <h3>Smart Cities</h3>
-              <p>
-                Energy demand prediction, dynamic waste routing, and real-time occupancy
-                detection with computer vision.
-              </p>
-              <ul>
-                <li>Vehicle flow models</li>
-                <li>Infrastructure segmentation</li>
-                <li>Anomaly alerts</li>
-              </ul>
-            </article>
-            <article class="card">
-              <div class="card-icon">🌱</div>
-              <h3>Agri-Tech</h3>
-              <p>
-                Vigor indices, optimal irrigation, and plant counting combining
-                multispectral imagery and IoT sensors.
-              </p>
-              <ul>
-                <li>NDVI/NDRE inference</li>
-                <li>Water stress detection</li>
-                <li>Input recommendations</li>
-              </ul>
-            </article>
-            <article class="card">
-              <div class="card-icon">🛰️</div>
-              <h3>Geospatial</h3>
-              <p>
-                Mosaic pipelines, object detection, and asset tracking with
-                self-supervised models.
-              </p>
-              <ul>
-                <li>Change detection</li>
-                <li>Fleet tracking</li>
-                <li>Critical infrastructure</li>
-              </ul>
-            </article>
-          </div>
-        </section>
+<!-- LOGO DEFS -->
+<svg width="0" height="0" style="position:absolute"><defs>
+<g id="rohan-mountains-only">
+  <path class="logo-mountains" d="M323.1,189.29l-18.02-24.14-43.53-57.71c-3.25-4.62-11.57-6.08-15.01-1.16l-12.97,18.57c-2.12,3.04-2.07,7.1.13,10.08h0s42.29,63.72,42.29,63.72l.29.45c1.59,2.51,4.35,4.03,7.32,4.03l32.59-.03c7.11,0,11.17-8.12,6.92-13.82Z"/>
+  <path class="logo-mountains" d="M96.4,125.04c1.73-2.94,1.68-6.61-.13-9.5l-16.65-26.56c-1.98-3.15-5.33-4.61-8.73-4.45-3.43.16-6.24,2.11-8.05,5.38l-21.97,35.45L1.38,189.16c-3.77,6.09.61,13.96,7.77,13.96l36.41.03c3.26,0,6.28-1.73,7.92-4.55l29.49-50.77,13.43-22.79Z"/>
+  <path class="logo-mountains" d="M216.79,121.4l-46.78-77.44c-1.92-3.18-4.23-5.13-7.73-5.28-3.03-.13-6.31,1.13-8.08,4.06l-30.86,51.17-24.28,40.26-32.63,54.8c-3.71,6.24.78,14.14,8.04,14.15h90.93c2.44.01,4.71-1.25,5.99-3.33l45.37-73.42c.94-1.52.95-3.44.03-4.97Z"/>
+  <path class="logo-mountains" d="M229.23,140.84c-2.83-4.38-9.26-4.32-12,.12l-32.45,52.62c-2.57,4.17.43,9.55,5.33,9.54l74.82-.03c2.7,0,4.31-3.02,2.79-5.26l-38.5-56.99Z"/>
+</g>
+<g id="rohan-mark">
+  <path class="logo-beacons" d="M161.8,32.39c8.94,0,16.2-7.25,16.2-16.2S170.75,0,161.8,0s-16.2,7.25-16.2,16.2,7.25,16.2,16.2,16.2ZM161.82,5.28c6.04,0,10.94,4.9,10.94,10.94s-4.9,10.94-10.94,10.94-10.94-4.9-10.94-10.94,4.9-10.94,10.94-10.94Z"/>
+  <circle class="logo-beacons" cx="161.73" cy="16.33" r="7.01"/>
+  <path class="logo-beacons" d="M253.41,97.21c8.84,0,16-7.16,16-16s-7.16-16-16-16-16,7.16-16,16,7.16,16,16,16ZM253.44,70.49c5.94,0,10.75,4.81,10.75,10.75s-4.81,10.75-10.75,10.75-10.75-4.81-10.75-10.75,4.81-10.75,10.75-10.75Z"/>
+  <circle class="logo-beacons" cx="253.46" cy="81.21" r="6.84"/>
+  <path class="logo-beacons" d="M71.32,79.09c8.89,0,16.09-7.21,16.09-16.09s-7.21-16.09-16.09-16.09-16.09,7.21-16.09,16.09,7.21,16.09,16.09,16.09ZM71.29,52.19c5.98,0,10.83,4.85,10.83,10.83s-4.85,10.83-10.83,10.83-10.83-4.85-10.83-10.83,4.85-10.83,10.83-10.83Z"/>
+  <circle class="logo-beacons" cx="71.25" cy="63.04" r="6.97"/>
+  <use href="#rohan-mountains-only"/>
+</g>
+<g id="rohan-full">
+  <use href="#rohan-mark"/>
+  <path class="logo-wordmark" d="M455.37,193.95l-8.43-29.15c-1.31-4.45-2.82-8.26-4.52-11.4-1.7-3.15-3.74-5.73-6.1-7.77-2.36-2.03-5.11-3.57-8.26-4.62-1.44-.48-2.96-.86-4.56-1.18,6.14-1.05,11.43-2.82,15.87-5.31,5.83-3.28,10.19-7.4,13.08-12.39,2.88-4.98,4.33-10.22,4.33-15.73,0-10.88-4.2-19.33-12.58-25.36-8.39-6.03-20.12-9.05-35.2-9.05h-55.05v8.06l18.21,2.08c.08,3.35.14,6.72.17,10.11.06,6.82.1,13.63.1,20.45v50.63c0,6.88-.03,13.67-.1,20.35-.03,3.3-.09,6.61-.17,9.91l-18.21,2.09v8.06h55.64v-8.06l-18.09-2.07c-.07-3.44-.13-6.88-.2-10.32-.13-6.81-.2-13.76-.2-20.84v-19.66h9.63c5.37,0,9.8.46,13.27,1.38,3.47.92,6.32,2.72,8.55,5.41,2.23,2.69,3.93,6.72,5.11,12.09l7.86,31.46c1.18,4.72,3.31,8,6.39,9.83,3.08,1.83,7.7,2.75,13.86,2.75,2.1,0,4-.1,5.7-.29,1.7-.2,3.31-.43,4.82-.69,1.51-.26,2.92-.59,4.23-.98v-8.06l-15.17-1.72ZM406.24,133.93h-15.14v-21.04c0-6.95.06-13.79.2-20.55.07-3.75.15-7.54.22-11.31h16.89c10.09,0,17.43,2.2,22.02,6.59,4.59,4.39,6.88,10.72,6.88,18.97,0,5.24-1.12,9.93-3.34,14.06-2.23,4.13-5.64,7.37-10.22,9.73-4.59,2.36-10.42,3.54-17.5,3.54Z"/>
+  <path class="logo-wordmark" d="M525.19,206.29c-7.6,0-14.84-1.8-21.73-5.41-6.88-3.6-12.49-9.04-16.81-16.32-4.33-7.27-6.49-16.29-6.49-27.04s2.16-20.02,6.49-27.43c4.33-7.4,9.93-12.98,16.81-16.71,6.88-3.74,14.12-5.6,21.73-5.6s14.85,1.87,21.73,5.6c6.88,3.73,12.52,9.31,16.91,16.71,4.39,7.41,6.59,16.55,6.59,27.43s-2.2,19.76-6.59,27.04c-4.39,7.27-10.03,12.71-16.91,16.32-6.88,3.6-14.13,5.41-21.73,5.41ZM525.19,197.44c5.63,0,10.42-1.5,14.35-4.52,3.93-3.01,6.95-7.47,9.04-13.37,2.1-5.9,3.15-13.24,3.15-22.02s-1.05-16.38-3.15-22.42c-2.1-6.03-5.11-10.58-9.04-13.67-3.93-3.08-8.72-4.62-14.35-4.62s-10.42,1.54-14.35,4.62c-3.93,3.08-6.91,7.64-8.95,13.67-2.03,6.03-3.05,13.5-3.05,22.42s1.01,16.12,3.05,22.02c2.03,5.9,5.01,10.36,8.95,13.37,3.93,3.02,8.72,4.52,14.35,4.52Z"/>
+  <path class="logo-wordmark" d="M675.74,193.89c-.01-.63-.02-1.28-.03-1.95-.07-4.85-.13-9.93-.2-15.24-.07-5.31-.1-10.06-.1-14.25v-18.29c0-12.84-2.06-22.12-6.19-27.82-4.13-5.7-10.45-8.55-18.97-8.55-4.46,0-8.98.88-13.57,2.65-4.59,1.77-8.98,4.2-13.17,7.27-3.39,2.49-6.46,5.26-9.24,8.3v-38.09l.79-28.12-2.75-1.57-30.08,8.85v7.08l16.12,1.97v86.32c0,4.06-.03,8.75-.1,14.06-.07,5.31-.13,10.42-.2,15.34-.01.72-.02,1.42-.03,2.1l-14.81,2.72v7.08h45.62v-7.08l-13.63-2.73c-.01-.68-.02-1.37-.03-2.09-.07-4.92-.13-10.03-.2-15.34-.07-5.31-.1-9.99-.1-14.06v-27.62c3.29-2.98,6.38-5.39,9.24-7.18,3.15-1.97,6.22-3.41,9.24-4.33,3.01-.91,6.1-1.38,9.24-1.38,5.77,0,9.9,1.7,12.39,5.11,2.49,3.41,3.74,9.64,3.74,18.68v16.71c0,4.2-.03,8.95-.1,14.25-.07,5.31-.13,10.39-.2,15.24,0,.71-.02,1.4-.03,2.07l-14.42,2.65v7.08h45.62v-7.08l-13.83-2.77Z"/>
+  <path class="logo-wordmark" d="M790.44,191.15c-1.05,1.31-2.16,2.36-3.34,3.15-1.18.79-2.62,1.18-4.33,1.18-2.1,0-3.8-.89-5.11-2.65-1.31-1.77-1.97-4.75-1.97-8.95v-41.88c0-8.26-1.11-14.88-3.34-19.86-2.23-4.98-5.57-8.62-10.03-10.91-4.46-2.29-10.16-3.44-17.11-3.44-9.96,0-18.38,2.2-25.27,6.59-6.88,4.39-11.24,10.32-13.08,17.79.26,2.49,1.18,4.46,2.75,5.9,1.57,1.44,3.74,2.16,6.49,2.16s4.75-.82,6.39-2.46c1.64-1.64,2.92-3.96,3.83-6.98l3.72-12.65c1.03-.25,2.03-.47,2.96-.62,2.88-.46,5.44-.69,7.67-.69,4.33,0,7.86.66,10.62,1.97,2.75,1.31,4.75,3.67,6,7.08,1.24,3.41,1.87,8.33,1.87,14.75v5.47c-.62.18-1.25.34-1.87.53-3.34.98-6.72,1.97-10.13,2.95-3.41.98-6.82,2-10.22,3.05-9.05,2.62-15.93,5.47-20.65,8.55-4.72,3.08-7.9,6.33-9.54,9.73-1.64,3.41-2.46,7.01-2.46,10.81,0,8.13,2.59,14.25,7.77,18.38,5.18,4.13,11.37,6.19,18.58,6.19,4.06,0,7.63-.62,10.72-1.87,3.08-1.24,6.16-3.15,9.24-5.7,2.65-2.2,5.65-4.95,8.94-8.18.65,3.88,2.15,7.14,4.53,9.75,3.28,3.6,7.67,5.41,13.17,5.41,3.41,0,6.52-.75,9.34-2.26,2.82-1.5,5.41-4.16,7.77-7.96l-3.93-4.33ZM743.94,192.23c-2.03.72-4.16,1.08-6.39,1.08-4.46,0-8.19-1.11-11.21-3.34-3.02-2.23-4.52-5.9-4.52-11.01,0-2.1.39-4.29,1.18-6.59.79-2.29,2.56-4.59,5.31-6.88,2.75-2.29,7.08-4.36,12.98-6.19,4.33-1.44,8.65-2.88,12.98-4.33,1.63-.54,3.27-1.07,4.92-1.59v29.55c-2.93,2.12-5.43,3.85-7.47,5.17-3.15,2.03-5.74,3.41-7.77,4.13Z"/>
+  <path class="logo-wordmark" d="M893.99,193.89c-.01-.63-.02-1.28-.03-1.95-.07-4.85-.13-9.93-.2-15.24-.07-5.31-.1-10.06-.1-14.25v-18.29c0-12.84-2.07-22.12-6.19-27.82-4.13-5.7-10.46-8.55-18.97-8.55-4.33,0-8.75.88-13.27,2.65-4.52,1.77-8.85,4.16-12.98,7.18-3.23,2.36-6.18,5-8.89,7.91l-1.63-15.78-2.95-1.97-27.53,11.99v6.88l15.53,1.77c.13,2.62.23,5.11.29,7.47.06,2.36.13,4.89.2,7.57.06,2.69.1,5.87.1,9.54v9.44c0,4.06-.03,8.75-.1,14.06-.07,5.31-.13,10.42-.2,15.34-.01.74-.02,1.44-.03,2.14l-14.61,2.68v7.08h45.62v-7.08l-13.63-2.73c-.01-.68-.02-1.37-.03-2.09-.07-4.92-.13-10.03-.2-15.34-.07-5.31-.1-9.99-.1-14.06v-28.64c2.92-2.49,5.68-4.56,8.26-6.17,3.15-1.97,6.22-3.41,9.24-4.33,3.01-.91,6.1-1.38,9.24-1.38,5.77,0,9.93,1.7,12.48,5.11,2.56,3.41,3.83,9.64,3.83,18.68v16.71c0,4.2-.03,8.95-.1,14.25-.07,5.31-.13,10.39-.2,15.24,0,.7-.02,1.38-.03,2.04l-14.62,2.68v7.08h45.62v-7.08l-13.83-2.77Z"/>
+</g>
+</defs></svg>
 
-        <section id="cases" class="section highlight">
-          <div class="section-head">
-            <p class="eyebrow">Recent work</p>
-            <h2>From prototype to production with reproducible infra.</h2>
-          </div>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="dot green"></div>
-              <div class="case-body">
-                <h3>Agricultural digital twin</h3>
-                <p>
-                  Parcels, weather, and sensors integrated to simulate optimal irrigation.
-                  Water usage reduced by 27%.
-                </p>
-                <a class="small-link" href="https://example.com/project-1" target="_blank" rel="noreferrer">
-                  View project →
-                </a>
-              </div>
-              <div class="case-media">
-                <div
-                  class="case-thumb"
-                  style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 320 180%27><rect width=%27320%27 height=%27180%27 rx=%2718%27 fill=%27%230f1624%27/><rect x=%2718%27 y=%2718%27 width=%27140%27 height=%2770%27 rx=%2714%27 fill=%27%2323e6a2%27/><rect x=%27170%27 y=%2722%27 width=%27120%27 height=%2732%27 rx=%278%27 fill=%27%237ec6ff%27/><rect x=%27170%27 y=%2764%27 width=%2796%27 height=%2718%27 rx=%276%27 fill=%27%23ffd479%27/><rect x=%2718%27 y=%27110%27 width=%27284%27 height=%2712%27 rx=%276%27 fill=%27%23343c4d%27/><rect x=%2718%27 y=%27132%27 width=%27230%27 height=%2712%27 rx=%276%27 fill=%27%23343c4d%27/><rect x=%2718%27 y=%27154%27 width=%27200%27 height=%2712%27 rx=%276%27 fill=%27%23343c4d%27/></svg>');"
-                ></div>
-              </div>
-            </div>
-            <div class="timeline-item flip">
-              <div class="dot amber"></div>
-              <div class="case-body">
-                <h3>Urban heat map</h3>
-                <p>
-                  Ridership and mobility models for public transit to prioritize
-                  micro-interventions and reversible lanes.
-                </p>
-                <a class="small-link" href="https://example.com/project-2" target="_blank" rel="noreferrer">
-                  View project →
-                </a>
-              </div>
-              <div class="case-media">
-                <div
-                  class="case-thumb"
-                  style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 320 180%27><rect width=%27320%27 height=%27180%27 rx=%2718%27 fill=%27%230d101a%27/><rect x=%2718%27 y=%2722%27 width=%27140%27 height=%2760%27 rx=%2712%27 fill=%27%237ec6ff%27/><rect x=%27170%27 y=%2722%27 width=%27120%27 height=%2732%27 rx=%278%27 fill=%27%2323e6a2%27/><rect x=%27170%27 y=%2762%27 width=%2796%27 height=%2718%27 rx=%276%27 fill=%27%23ffd479%27/><rect x=%2718%27 y=%27108%27 width=%27284%27 height=%2712%27 rx=%276%27 fill=%27%23343c4d%27/><rect x=%2718%27 y=%27130%27 width=%27244%27 height=%2712%27 rx=%276%27 fill=%27%23434a59%27/><rect x=%2718%27 y=%27152%27 width=%27180%27 height=%2712%27 rx=%276%27 fill=%27%23343c4d%27/></svg>');"
-                ></div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="dot blue"></div>
-              <div class="case-body">
-                <h3>Climate risk detection</h3>
-                <p>
-                  Automatic flood classification with SAR and optical imagery to trigger
-                  parametric insurance.
-                </p>
-                <a class="small-link" href="https://example.com/project-3" target="_blank" rel="noreferrer">
-                  View project →
-                </a>
-              </div>
-              <div class="case-media">
-                <div
-                  class="case-thumb"
-                  style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 320 180%27><rect width=%27320%27 height=%27180%27 rx=%2718%27 fill=%27%230f1826%27/><rect x=%2718%27 y=%2718%27 width=%27140%27 height=%2770%27 rx=%2714%27 fill=%27%23ffd479%27/><rect x=%27170%27 y=%2722%27 width=%27120%27 height=%2732%27 rx=%278%27 fill=%27%2323e6a2%27/><rect x=%27170%27 y=%2764%27 width=%2796%27 height=%2718%27 rx=%276%27 fill=%27%237ec6ff%27/><rect x=%2718%27 y=%27110%27 width=%27284%27 height=%2712%27 rx=%276%27 fill=%27%23343c4d%27/><rect x=%2718%27 y=%27132%27 width=%27250%27 height=%2712%27 rx=%276%27 fill=%27%23434a59%27/><rect x=%2718%27 y=%27154%27 width=%27190%27 height=%2712%27 rx=%276%27 fill=%27%23343c4d%27/></svg>');"
-                ></div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="founders" class="section founders">
-          <div class="section-head">
-            <p class="eyebrow">Team</p>
-            <h2>Meet the founders building Rohan.</h2>
-            <p class="lede narrow">
-              AI, geospatial, and operations veterans with a bias for shipping pilots fast.
-            </p>
-          </div>
-          <div class="cards founders-grid">
-            <article class="card founder-card">
-              <div class="founder-head">
-                <img class="avatar-img" src="./diavila.jpg" alt="Adriana Di Ávila avatar" />
-                <div>
-                  <h3>Adriana Di Ávila</h3>
-                  <p class="muted">
-                    CTO · Cloud & AI Systems — AWS Community Builder in AI,
-                  </p>
-                </div>
-              </div>
-              <p class="muted">
-                leading cloud engineering initiatives and building inclusive tech communities.
-              </p>
-            </article>
-            <article class="card founder-card">
-              <div class="founder-head">
-                <img class="avatar-img" src="./csar.jpg" alt="Cesar Mendez avatar" />
-                <div>
-                  <h3>Cesar Mendez</h3>
-                  <p class="muted">
-                    CEO · Data Intelligence — Data engineer specializing in smart cities, IoT analytics, and AI platforms;
-                  </p>
-                </div>
-              </div>
-              <p class="muted">
-                active community leader and NASA Space Apps finalist.
-              </p>
-            </article>
-            <article class="card founder-card">
-              <div class="founder-head">
-                <img class="avatar-img" src="./mafer.jpg" alt="María Fernanda avatar" />
-                <div>
-                  <h3>María Fernanda</h3>
-                  <p class="muted">
-                    Research · Data Science & ML — Focused on data-driven software,
-                  </p>
-                </div>
-              </div>
-              <p class="muted">
-                combining Python, machine learning, and analytical research for practical AI solutions.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section id="cta" class="section cta">
-          <div class="cta-card">
-            <div>
-              <p class="eyebrow">Let’s map your case</p>
-              <h2>Tell us your challenge and we’ll run a data sprint in 10 days.</h2>
-              <p class="lede narrow">
-                We train, evaluate, and deploy a pilot with your own layers. Full-stack
-                ML + geospatial team on demand.
-              </p>
-            </div>
-            <div class="cta-actions">
-              <a class="btn primary wide" href="mailto:hello@rohan.ai">
-                Send briefing
-              </a>
-              <a class="btn ghost wide" href="#services">See capabilities</a>
-              <p class="disclaimer">
-                Includes data checklist and integration timeline.
-              </p>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer class="footer">
-        <div>Rohan · Geospatial AI | Monterrey / CDMX / Remote</div>
-        <div class="pill-row">
-          <div class="pill small">API-first</div>
-          <div class="pill small">MLOps ready</div>
-          <div class="pill small">Satellite + IoT</div>
-        </div>
-      </footer>
+<header>
+  <nav class="nav" aria-label="Principal">
+    <svg class="nav-logo" viewBox="0 0 907.82 206.29" role="img" aria-label="Rohan"><use href="#rohan-full"/></svg>
+    <span class="nav-tag">Technologies</span>
+    <div class="nav-links">
+      <a href="#productos">Productos</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#empresa">Empresa</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">◐ Claro</button>
     </div>
+  </nav>
+</header>
 
-    <script>
-      window.MAPBOX_TOKEN = __MAPBOX_TOKEN__;
-    </script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
-    <script src="./app.js"></script>
-  </body>
+<!-- ============ HERO ============ -->
+<div class="wrap">
+  <div class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Rohan Technologies</div>
+        <h1>El territorio habla en capas.<br>Nosotros las <em>fusionamos</em>.</h1>
+        <p class="hero-sub">Construimos plataformas de inteligencia territorial con agentes de IA: modelamos cualquier dominio como capas de conocimiento fusionables y razonamos sobre ellas para detectar, simular y coordinar — con las personas siempre al mando.</p>
+        <div class="hero-tagline">Geospatial intelligence for the age of AI</div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://orbital.rohan.mx">
+            Conoce Orbital
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-secondary" href="https://data.rohan.mx">Explora los datos</a>
+        </div>
+      </div>
+      <div>
+        <div class="hero-mark" aria-hidden="true">
+          <svg viewBox="-40 -40 415 287">
+            <use href="#rohan-mountains-only"/>
+            <g class="relay-1">
+              <circle class="relay-ring" cx="71.25" cy="63.04" r="16"/>
+              <path class="logo-beacons" d="M71.32,79.09c8.89,0,16.09-7.21,16.09-16.09s-7.21-16.09-16.09-16.09-16.09,7.21-16.09,16.09,7.21,16.09,16.09,16.09ZM71.29,52.19c5.98,0,10.83,4.85,10.83,10.83s-4.85,10.83-10.83,10.83-10.83-4.85-10.83-10.83,4.85-10.83,10.83-10.83Z"/>
+              <circle class="logo-beacons" cx="71.25" cy="63.04" r="6.97"/>
+            </g>
+            <g class="relay-2">
+              <circle class="relay-ring" cx="161.73" cy="16.33" r="16"/>
+              <path class="logo-beacons" d="M161.8,32.39c8.94,0,16.2-7.25,16.2-16.2S170.75,0,161.8,0s-16.2,7.25-16.2,16.2,7.25,16.2,16.2,16.2ZM161.82,5.28c6.04,0,10.94,4.9,10.94,10.94s-4.9,10.94-10.94,10.94-10.94-4.9-10.94-10.94,4.9-10.94,10.94-10.94Z"/>
+              <circle class="logo-beacons" cx="161.73" cy="16.33" r="7.01"/>
+            </g>
+            <g class="relay-3">
+              <circle class="relay-ring" cx="253.46" cy="81.21" r="16"/>
+              <path class="logo-beacons" d="M253.41,97.21c8.84,0,16-7.16,16-16s-7.16-16-16-16-16,7.16-16,16,7.16,16,16,16ZM253.44,70.49c5.94,0,10.75,4.81,10.75,10.75s-4.81,10.75-10.75,10.75-10.75-4.81-10.75-10.75,4.81-10.75,10.75-10.75Z"/>
+              <circle class="logo-beacons" cx="253.46" cy="81.21" r="6.84"/>
+            </g>
+          </svg>
+        </div>
+        <div class="hero-mark-caption">La señal se transmite de cima en cima</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ STORY ============ -->
+<div class="wrap">
+  <section aria-labelledby="historia-h">
+    <div class="story">
+      <div>
+        <div class="eyebrow">El origen del nombre</div>
+        <h2 id="historia-h" class="story-title">Faros sobre las montañas</h2>
+        <div class="story-text">
+          <p>En la obra de Tolkien, cuando la amenaza se acercaba, Gondor encendía un faro sobre la cumbre. Luego el siguiente, y el siguiente — de cima en cima — hasta que <strong>Rohan</strong>, el reino de los jinetes, veía la señal y partía.</p>
+          <p>No eran magos. Eran personas que respondían al llamado. Esa es la convicción detrás de todo lo que construimos: <strong>la IA es el faro que ve la amenaza antes que nadie; las personas siguen siendo quienes cabalgan.</strong></p>
+        </div>
+      </div>
+      <div>
+        <blockquote class="story-quote">
+          «Los faros de Minas Tirith están encendidos, ¡Gondor pide ayuda!»
+          <span class="attr">— Y Rohan responde</span>
+        </blockquote>
+        <div class="story-keys">
+          <div class="story-key"><span class="k">Montañas</span><span>Infraestructura sólida — el territorio que resiste.</span></div>
+          <div class="story-key"><span class="k">Faros</span><span>La señal que detecta, transmite y convoca.</span></div>
+          <div class="story-key"><span class="k">Rohan</span><span>La fuerza humana que responde al llamado.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ PRODUCTS ============ -->
+<div class="wrap">
+  <section id="productos" aria-labelledby="productos-h">
+    <div class="sec-head">
+      <div class="eyebrow">Productos</div>
+      <h2 id="productos-h">Una plataforma, tres superficies</h2>
+      <p>Orbital razona, el portal de datos comparte, Labs experimenta. Las tres comparten el mismo motor de modelado semántico y la misma convicción: conocimiento trazable, de la fuente a la decisión.</p>
+    </div>
+    <div class="products">
+
+      <a class="product glass" href="https://orbital.rohan.mx">
+        <div class="product-top">
+          <span class="product-domain">orbital.rohan.mx</span>
+          <span class="product-status">En desarrollo</span>
+        </div>
+        <h3><span class="product-beacon" style="--bc:var(--highlight)"><span class="c"></span><span class="r"></span></span>Orbital</h3>
+        <div class="product-role">Plataforma de analítica ontológica geoespacial</div>
+        <p>El producto central. Un agente de modelado semántico describe cualquier dominio como capas de conocimiento independientes — esquema, instancias, embeddings — y las fusiona en un gemelo digital operativo. Sobre él, un sistema multi-agente detecta anomalías, simula escenarios y propone opciones de coordinación.</p>
+        <ul>
+          <li>Capas de conocimiento componibles y fusionables</li>
+          <li>Agentes cognitivos, adversariales y evaluadores</li>
+          <li>Dominios: hidrología, tráfico, mercado, pandemias, operaciones</li>
+        </ul>
+        <span class="product-go">Conocer Orbital <span class="arrow">→</span></span>
+      </a>
+
+      <a class="product glass" href="https://data.rohan.mx">
+        <div class="product-top">
+          <span class="product-domain">data.rohan.mx</span>
+          <span class="product-status">En desarrollo</span>
+        </div>
+        <h3><span class="product-beacon" style="--bc:var(--twilight)"><span class="c"></span><span class="r"></span></span>Datos Abiertos</h3>
+        <div class="product-role">Catálogo abierto de datos territoriales</div>
+        <p>Los datos que recolectamos y curamos — series de sensores, capas geoespaciales, indicadores de dominio — publicados con licencias claras para que cualquier plataforma los use. Cada dataset expone su linaje completo (fuente → transformación → consumidores) y una evaluación honesta de su aptitud para sistemas de IA: knowledge base RAG, fine-tuning o entrenamiento.</p>
+        <ul>
+          <li>Licencias abiertas y esquemas documentados</li>
+          <li>Linaje dato → modelo → decisión, visible</li>
+          <li>Evaluación de preparación para IA por dataset</li>
+        </ul>
+        <span class="product-go">Explorar el catálogo <span class="arrow">→</span></span>
+      </a>
+
+      <a class="product glass" href="https://labs.rohan.mx">
+        <div class="product-top">
+          <span class="product-domain">labs.rohan.mx</span>
+          <span class="product-status">En desarrollo</span>
+        </div>
+        <h3><span class="product-beacon" style="--bc:var(--sargasso)"><span class="c"></span><span class="r"></span></span>Labs</h3>
+        <div class="product-role">Investigación, simulación y experimentos</div>
+        <p>El espacio donde probamos ideas en público: simulaciones interactivas, reconstrucciones de eventos, prototipos de visualización y notas técnicas sobre ontologías, fusión de conocimiento y arquitecturas multi-agente. Lo que funciona aquí, madura hacia Orbital.</p>
+        <ul>
+          <li>Simulaciones y demos interactivas</li>
+          <li>Experimentos de visualización y scrollytelling</li>
+          <li>Notas de investigación aplicada</li>
+        </ul>
+        <span class="product-go">Visitar el laboratorio <span class="arrow">→</span></span>
+      </a>
+
+    </div>
+  </section>
+</div>
+
+<!-- ============ HOW IT WORKS — capas de información animadas ============ -->
+<div class="wrap">
+  <section id="como-funciona" aria-labelledby="how-h">
+    <div class="sec-head">
+      <div class="eyebrow">Cómo funciona</div>
+      <h2 id="how-h">Del dato disperso a la decisión trazable</h2>
+      <p>Cada capa de información se construye por separado; la fusión las convierte en un solo gemelo digital del territorio, y los agentes razonan sobre él. Mira las capas fusionarse — o contrólalo tú.</p>
+    </div>
+    <div class="how-grid">
+
+      <div class="layers-panel glass">
+        <div class="layers-panel-head">
+          <span class="hud-title">Capas de información</span>
+          <span class="sub" id="layersSub">vista separada · 4 capas</span>
+          <button class="btn btn-secondary btn-sm" id="mergeBtn">Fusionar capas</button>
+        </div>
+        <div class="layers-stage">
+          <div class="layers-state"><span class="b"><span class="c"></span><span class="r"></span></span><span id="layersStateTxt">Componiendo gemelo digital</span></div>
+          <div class="layers-viewport">
+            <div class="layers-scene" id="layersScene">
+              <div class="layer base" style="--lz:-90px;">
+                <div class="layer-fill" id="lf-sat"></div>
+                <span class="layer-tab" style="--tab:#5C6680;">01 · Satélite base</span>
+              </div>
+              <div class="layer" style="--lz:-30px;">
+                <div class="layer-fill" id="lf-bio"></div>
+                <span class="layer-tab" style="--tab:#88AE6A;">02 · Biomasa (NDVI)</span>
+              </div>
+              <div class="layer" style="--lz:30px;">
+                <div class="layer-fill" id="lf-water"></div>
+                <span class="layer-tab" style="--tab:#6E92BC;">03 · Hidrología</span>
+              </div>
+              <div class="layer" style="--lz:90px;">
+                <div class="layer-fill" id="lf-detect"></div>
+                <span class="layer-tab" style="--tab:#E8743C;">04 · Detecciones</span>
+              </div>
+            </div>
+          </div>
+          <div class="layers-legend" aria-hidden="true">
+            <div class="ll-item"><span class="ll-dot" style="background:#5C6680;"></span>Imagen satelital (raster base)</div>
+            <div class="ll-item"><span class="ll-dot" style="background:#88AE6A;"></span>Índice de vegetación / biomasa</div>
+            <div class="ll-item"><span class="ll-dot" style="background:#6E92BC;"></span>Cuerpos de agua y drenaje</div>
+            <div class="ll-item"><span class="ll-dot" style="background:#E8743C;"></span>Anomalías y detecciones de agente</div>
+          </div>
+          <div class="layers-coords">capas → fusión → gemelo digital</div>
+        </div>
+      </div>
+
+      <div class="how-steps">
+        <div class="how-step glass">
+          <div class="how-num">PASO 01 · CAPAS</div>
+          <h3>Capas independientes</h3>
+          <p>Cada dominio se describe como capas de conocimiento: el esquema de clases y relaciones, las instancias del mundo real y su proyección a embeddings. Cada capa se construye, versiona y activa por separado.</p>
+        </div>
+        <div class="how-step glass">
+          <div class="how-num">PASO 02 · FUSIÓN</div>
+          <h3>Fusión en un gemelo digital</h3>
+          <p>Las capas se combinan en un solo modelo del dominio: una superficie donde se superpone toda la inteligencia disponible. La fusión captura relaciones que un modelo puramente físico no ve.</p>
+        </div>
+        <div class="how-step glass">
+          <div class="how-num">PASO 03 · AGENTES</div>
+          <h3>Agentes que razonan</h3>
+          <p>Sobre el gemelo, tres tipos de agente trabajan en conjunto: el cognitivo analiza, el adversarial estresa los planes con escenarios extremos y el evaluador valida los resultados y mide la confianza.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!-- ============ DIFFERENTIATOR ============ -->
+<div class="wrap">
+  <section id="diferenciador" aria-labelledby="diff-h">
+    <div class="diff-band">
+      <div>
+        <div class="eyebrow">Nuestro enfoque</div>
+        <h2 id="diff-h">La mayoría modela el fenómeno. Nosotros modelamos también <em>a quienes responden</em>.</h2>
+        <p>El tráfico, la demanda, la propagación, la crecida — todos los sistemas de analítica modelan eso. Rohan trata además a los equipos humanos que responden como agentes de primera clase: qué unidades pueden actuar, con qué aptitudes y certificaciones, qué reasignaciones son seguras y cuáles generan conflicto. La coordinación es la simulación, no un accesorio del fenómeno.</p>
+      </div>
+      <div>
+        <div class="diff-lanes" aria-hidden="true">
+          <div class="diff-lane"><span class="ln">Cuadrilla A</span><div class="diff-track"><div class="diff-block" style="--bc:#D99B3C;left:6%;width:26%;"></div><div class="diff-block" style="--bc:#E8743C;left:52%;width:34%;"></div></div></div>
+          <div class="diff-lane"><span class="ln">Cuadrilla B</span><div class="diff-track"><div class="diff-block" style="--bc:#88AE6A;left:16%;width:24%;"></div><div class="diff-block" style="--bc:#D99B3C;left:66%;width:26%;"></div></div></div>
+          <div class="diff-lane"><span class="ln">Unidad aérea</span><div class="diff-track"><div class="diff-block" style="--bc:#88AE6A;left:0;width:16%;"></div><div class="diff-block" style="--bc:#6E92BC;left:34%;width:26%;"></div></div></div>
+          <div class="diff-lane"><span class="ln">Equipo móvil</span><div class="diff-track"><div class="diff-block" style="--bc:#E8743C;left:26%;width:42%;"></div></div></div>
+          <div class="diff-caption"><span class="b"><span class="c"></span><span class="r"></span></span>Coordinación como agentes de primera clase</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ MVV ============ -->
+<div class="wrap">
+  <section id="empresa" aria-labelledby="empresa-h">
+    <div class="sec-head">
+      <div class="eyebrow">Empresa</div>
+      <h2 id="empresa-h">Por qué existimos</h2>
+    </div>
+    <div class="mvv">
+      <div>
+        <div class="mvv-block">
+          <div class="mvv-label">Misión</div>
+          <p>Convertir los datos dispersos de un territorio en conocimiento fusionable y accionable, para aumentar — nunca reemplazar — la capacidad humana de decidir y coordinar ante lo complejo.</p>
+        </div>
+        <div class="mvv-block">
+          <div class="mvv-label">Visión</div>
+          <p>Que cada territorio cuente con su gemelo digital operativo: una red de faros que detecta antes, transmite más rápido y convoca mejor — y que la respuesta humana organizada sea tratada como lo que es: la infraestructura más valiosa ante cualquier crisis.</p>
+        </div>
+      </div>
+      <div>
+        <div class="mvv-label">Valores</div>
+        <div class="values">
+          <div class="value">
+            <span class="vb"><span class="c"></span><span class="r"></span></span>
+            <div class="value-body"><h4>Lo humano en el centro</h4><p>La IA es el faro que ve la amenaza; las personas siguen siendo quienes cabalgan.</p></div>
+          </div>
+          <div class="value">
+            <span class="vb"><span class="c"></span><span class="r"></span></span>
+            <div class="value-body"><h4>Trazabilidad radical</h4><p>Toda decisión debe poder recorrerse de vuelta: dato → modelo → decisión.</p></div>
+          </div>
+          <div class="value">
+            <span class="vb"><span class="c"></span><span class="r"></span></span>
+            <div class="value-body"><h4>Honestidad calibrada</h4><p>La evidencia manda sobre el entusiasmo. Decimos lo que está validado y lo que no.</p></div>
+          </div>
+          <div class="value">
+            <span class="vb"><span class="c"></span><span class="r"></span></span>
+            <div class="value-body"><h4>Conocimiento abierto</h4><p>Los datos que pueden ser públicos, lo son, con licencias claras. El portal es principio, no marketing.</p></div>
+          </div>
+          <div class="value">
+            <span class="vb"><span class="c"></span><span class="r"></span></span>
+            <div class="value-body"><h4>Precisión sobre decoración</h4><p>Como un instrumento científico: cero ornamento gratuito, en el diseño y en el discurso.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ STATUS + CONTACT ============ -->
+<div class="wrap">
+  <section class="section-last">
+    <div class="status-band">
+      <div>
+        <h2>Plataforma en desarrollo activo. Si lo que construimos te resuena, hablemos.</h2>
+        <div class="status-line"><span class="b"><span class="c"></span><span class="r"></span></span>En construcción · 2026</div>
+      </div>
+      <a class="btn btn-primary" href="mailto:cesar@rohan.mx">
+        Escríbenos
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+      </a>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <svg class="foot-logo" viewBox="0 0 907.82 206.29" role="img" aria-label="Rohan"><use href="#rohan-full"/></svg>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h5>Productos</h5>
+          <a href="https://orbital.rohan.mx">Orbital <span>orbital.rohan.mx</span></a>
+          <a href="https://data.rohan.mx">Datos Abiertos <span>data.rohan.mx</span></a>
+          <a href="https://labs.rohan.mx">Labs <span>labs.rohan.mx</span></a>
+        </div>
+        <div class="foot-col">
+          <h5>Empresa</h5>
+          <a href="#empresa">Misión y valores</a>
+          <a href="#diferenciador">Enfoque</a>
+          <a href="mailto:cesar@rohan.mx">Contacto</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>Rohan Technologies · rohan.mx</span>
+      <span>Geospatial intelligence for the age of AI</span>
+    </div>
+  </div>
+</footer>
+
+<script src="./app.js"></script>
+</body>
 </html>
